@@ -1,12 +1,13 @@
 import nodemailer from 'nodemailer';
 import 'dotenv/config'
 import config from './connection.js';
+
 const transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",
     port: 587,
     secure: false,
     auth: {
-        user: "testeFishing67@hotmail.com",
+        user: "teste123teste3@outlook.com",
         pass: "teste123teste"
     },
     tls: {
@@ -26,12 +27,12 @@ export async function sendDB(DB) {
     return resp
 };
 
-export async function ListInfos(DB) {
+export async function ListInfos() {
     let sql = `
     SELECT 	EMAIL 	AS Email,
-            SENHA	AS SENHA
-    FROM	INFO_PESSOAS;
-    `
+            SENHA	AS Senha
+    FROM	INFO_PESSOAS`
+
     const [resp] = await config.query(sql)
     return resp
 };

